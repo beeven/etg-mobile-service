@@ -1,0 +1,15 @@
+
+
+
+
+# cpp
+cpp/*.o
+cpp/*.pb.cc
+cpp/*.pb.h
+cpp/etg_service_server
+cpp/etg_service_client
+
+
+# python
+python/__pycache__/
+python/*_pb2.py

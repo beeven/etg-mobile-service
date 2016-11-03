@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package etg.profile;
+
+message UserProfile {
+    string name = 1;
+    string email = 2;
+    string mobile = 3;
+}
+
+message CompanyProfile {
+    string company_id = 1;
+    string org_co = 2;
+    string social_credit_code  = 3;
+    string name = 4;
+    string contact_name = 5;
+    string contact_mobile = 6;
+    string law_man_name = 7;
+    string law_man_mobile = 8;
+}

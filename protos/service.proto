@@ -1,0 +1,15 @@
+syntax = "proto3";
+import public "profile.proto";
+import public "auth.proto";
+
+option objc_class_prefix = "ETG";
+option java_multiple_files = true;
+option java_package = "etg.service";
+option java_outer_classname = "EtgProto";
+option csharp_namespace = "Etg.Service";
+
+package etg.service;
+
+service Auth {
+    rpc Login(etg.auth.LoginRequest) returns (etg.auth.LoginReply) {}
+}
