@@ -13,7 +13,7 @@
 #include <grpc++/security/server_credentials.h>
 //#include <google/protobuf/timestamp.pb.h>
 //#include "helper.h"
-#include "service.grpc.pb.h"
+#include "auth.grpc.pb.h"
 
 using grpc::Server;
 using grpc::ServerBuilder;
@@ -22,9 +22,9 @@ using grpc::ServerReader;
 using grpc::ServerReaderWriter;
 using grpc::ServerWriter;
 using grpc::Status;
-using etg::service::Auth;
+using etg::auth::Auth;
 using etg::auth::LoginRequest;
-using etg::auth::LoginReply;
+using etg::auth::LoginResponse;
 using std::chrono::system_clock;
 
 class EtgServiceImpl final : public Auth::Service {
@@ -33,14 +33,14 @@ class EtgServiceImpl final : public Auth::Service {
 
         }
 
-        Status Login(ServerContext* context, const LoginRequest* loginRequest, LoginReply* loginReply) override {
+        Status Login(ServerContext* context, const LoginRequest* loginRequest, LoginResponse* LoginResponse) override {
             std::cout << "Login Email: " << loginRequest->email() << std::endl;
-            loginReply->set_is_successful(true);
+            LoginResponse->set_is_successful(true);
 
             struct timeval tv;
             gettimeofday(&tv, NULL);
-            loginReply->mutable_timestamp_expire_at()->set_seconds(tv.tv_sec);
-            loginReply->mutable_timestamp_expire_at()->set_nanos(tv.tv_usec * 1000);
+            LoginResponse->mutable_timestamp_expire_at()->set_seconds(tv.tv_sec);
+            LoginResponse->mutable_timestamp_expire_at()->set_nanos(tv.tv_usec * 1000);
             return Status::OK;
         }
 };

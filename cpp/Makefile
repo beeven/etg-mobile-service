@@ -45,10 +45,10 @@ vpath %.proto $(PROTOS_PATH)
 
 all: system-check etg_service_client etg_service_server
 
-etg_service_client: profile.pb.o auth.pb.o service.pb.o service.grpc.pb.o etg_service_client.o
+etg_service_client: profile.pb.o auth.pb.o auth.grpc.pb.o etg_service_client.o
 	$(CXX) $^ $(LDFLAGS) -o $@
 
-etg_service_server: profile.pb.o auth.pb.o service.pb.o service.grpc.pb.o etg_service_server.o
+etg_service_server: profile.pb.o auth.pb.o auth.grpc.pb.o etg_service_server.o
 	$(CXX) $^ $(LDFLAGS) -o $@
 
 %.grpc.pb.cc: %.proto

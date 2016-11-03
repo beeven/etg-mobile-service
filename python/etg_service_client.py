@@ -37,7 +37,6 @@ import time
 import grpc
 
 import auth_pb2
-import service_pb2
 
 def login(stub):
     request = auth_pb2.LoginRequest()
@@ -53,7 +52,7 @@ def login(stub):
 
 def run():
     channel = grpc.insecure_channel('localhost:50051')
-    stub = service_pb2.AuthStub(channel)
+    stub = auth_pb2.AuthStub(channel)
     login(stub)
 
 if __name__=="__main__":

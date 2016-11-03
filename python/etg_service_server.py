@@ -36,31 +36,30 @@ import datetime
 
 import grpc
 from google.protobuf.timestamp_pb2 import Timestamp
-import auth_pb2, profile_pb2
-import service_pb2
+import auth_pb2
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
 
-class EtgServiceServicer(service_pb2.AuthServicer):
+class EtgServiceServicer(auth_pb2.AuthServicer):
     """Provides methods that implement funcionality of etg service server."""
 
     def __init__(self):
         pass
     
     def Login(self, loginRequest, context):
-        reply = auth_pb2.LoginReply(is_successful=True, message="OK")
+        reply = auth_pb2.LoginResponse(is_successful=True, message="OK")
         reply.timestamp_expire_at.FromDatetime(datetime.datetime.now())
         return reply
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    service_pb2.add_AuthServicer_to_server(EtgServiceServicer(), server)
+    auth_pb2.add_AuthServicer_to_server(EtgServiceServicer(), server)
     server.add_insecure_port('[::]:50051')
     server.start()
     try:
         while True:
-            time.sleep(_ONE_DAY_IN_SECONDS);
+            time.sleep(_ONE_DAY_IN_SECONDS)
     except KeyboardInterrupt:
         server.stop(0)
 
