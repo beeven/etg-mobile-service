@@ -1,5 +1,8 @@
+.DS_Store
 
-
+.vscode/
+.vs/
+.idea/
 
 
 # cpp
@@ -8,7 +11,7 @@ cpp/*.pb.cc
 cpp/*.pb.h
 cpp/etg_service_server
 cpp/etg_service_client
-
+cpp/build/
 
 # python
 python/__pycache__/
