@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(NuGetPackageRoot)' == ''">
+    <NuGetPackageRoot>/Users/beeven/.nuget/packages/</NuGetPackageRoot>
+  </PropertyGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)grpc.core/1.0.1/build/net45/Grpc.Core.targets" Condition="Exists('$(NuGetPackageRoot)grpc.core/1.0.1/build/net45/Grpc.Core.targets')" />
+  </ImportGroup>
+</Project>

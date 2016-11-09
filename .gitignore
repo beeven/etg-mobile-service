@@ -3,7 +3,7 @@
 .vscode/
 .vs/
 .idea/
-
+certs/
 
 # cpp
 cpp/*.o
@@ -16,3 +16,10 @@ cpp/build/
 # python
 python/__pycache__/
 python/*_pb2.py
+
+
+# csharp
+
+csharp/bin/
+csharp/obj/
+csharp/project.lock.json

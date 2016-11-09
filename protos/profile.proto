@@ -14,6 +14,7 @@ message UserProfile {
     string name = 1;
     string email = 2;
     string mobile = 3;
+    uint32 authentication_mode = 4;
 }
 
 message CompanyProfile {
