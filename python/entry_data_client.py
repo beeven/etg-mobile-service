@@ -2,28 +2,28 @@
 """The Python implementation of the gRPC route guide client."""
 
 from __future__ import print_function
-
-import random
-import time
-
 import grpc
 
-import data_entry_pb2
+import entry_data_pb2
 
 
 def generate_entry_ids():
-    entryIds = ["518920160896053556","516620160666505983","518920160896053557","51520160536088309"]
+    """Generate ids iterator"""
+    entryIds = ["518920160896053556", "516620160666505983",
+                "518920160896053557", "51520160536088309"]
     for entry in entryIds:
-        yield data_entry_pb2.GetEntryStatusRequest(entry_id = entry)
+        yield entry_data_pb2.GetEntryStatusRequest(entry_id=entry)
+
 
 def query(stub):
     replies = stub.GetEntryStatus(generate_entry_ids())
     for reply in replies:
-        print("{0}:{1}\t{2}".format(reply.entry_id,reply.status_text, reply.declare_date.ToDatetime()))
-    
+        print("{0}:{1}\t{2}".format(reply.entry_id,
+                                    reply.status_text, reply.declare_date.ToDatetime()))
+
 
 def run():
-    #channel = grpc.insecure_channel('localhost:50052')
+    
     credential = grpc.ssl_channel_credentials("""-----BEGIN CERTIFICATE-----
 MIIFSzCCBDOgAwIBAgIJAK1eE69OSQpDMA0GCSqGSIb3DQEBBQUAMIHJMQswCQYD
 VQQGEwJDTjESMBAGA1UECBMJR3Vhbmdkb25nMRIwEAYDVQQHEwlHdWFuZ3pob3Ux
@@ -54,7 +54,7 @@ yR0b9/MPsIncjD+DZrnkV5a2UvROZKGMS/bF6NgsV9eNrAOKZvOX55IvKytYFoTW
 qZqCqEvNABMzEOGNqmbjnCAETWyTRRMyVzQTpC7KrinaWnYVzRPOOI+MCc4lNIbP
 dO+ygg2k6HRG1KIzaI4/YKrc7+qAnYo0Ot0ezivfMx4Qzbbq7TXysWH1po5zRSGz
 EQ7X3D8WAC54mSRvmVCh
------END CERTIFICATE-----""",b"""-----BEGIN RSA PRIVATE KEY-----
+-----END CERTIFICATE-----""", b"""-----BEGIN RSA PRIVATE KEY-----
 MIIEpgIBAAKCAQEA46dRqHGeY9DDyUXdyYrH+xXePRL6cv3SogxLPmuUeegNYHzu
 aM3Kp6+IQG3TLvAbd3QuAXlkz7/a79yiyhJZqhmNZzHqBd1NxR3mbDeLM2OJWFa/
 2e+a17yL1TspJhmmHtH95VFsTYd1l6aSusy0uRLW4thlwVGKCKDdJop/XS2jPBWD
@@ -80,7 +80,7 @@ pk9SEdOcSINVgkhmNMa4hVIN87URN6tS8aNU7F4OufgLEVjqpuIu8SURKwjgLqNZ
 QFANofFlAoGBAMCLwE6c36sQVPjV6yaOvjsaDKJoEPj8c+pOabFglJ8Fi+aALOUP
 FeSGg9RH/4eRSfcwaJ1VZVuYlZaxNkwVpQyO9TuFoVQFyF/8ZGXm4q5fZUzTT0v+
 XsQwc1KMdN97lplPUyRinJD67Pe65+KH3SuQrqvFlmZ4qWY7S6BoR8Zw
------END RSA PRIVATE KEY-----""",b"""-----BEGIN CERTIFICATE-----
+-----END RSA PRIVATE KEY-----""", b"""-----BEGIN CERTIFICATE-----
 MIID6DCCAtACAQIwDQYJKoZIhvcNAQEFBQAwgckxCzAJBgNVBAYTAkNOMRIwEAYD
 VQQIEwlHdWFuZ2RvbmcxEjAQBgNVBAcTCUd1YW5nemhvdTEmMCQGA1UEChMdR3Vh
 bmd6aG91IEN1c3RvbXMgRGF0YSBDZW50ZXIxIjAgBgNVBAsTGUlUIERldmVsb3Bt
@@ -103,9 +103,10 @@ vXduMziT+Jia+X42fGi7u2bipShxnXPTsRlvAwPetLdETyNcMUQpO6LLqLgAUVNy
 xbvY5K5LEVc2wLW8B+5sgKqbQHneDbWts1SHSaCm349QXTk8fay+Wp85xY/Djo4v
 EIPEmy8vEcQxBwnagYN4QORECFfVlj0ISMXjhYn1ZOOUjUJohOGs8iK8Teo=
 -----END CERTIFICATE-----""")
-    channel = grpc.secure_channel('localhost:8443',credential)
-    stub = data_entry_pb2.EntryDataServiceStub(channel)
+    channel = grpc.secure_channel('localhost:8443', credential)
+    #channel = grpc.insecure_channel('localhost:50052')
+    stub = entry_data_pb2.EntryDataServiceStub(channel)
     query(stub)
 
-if __name__=="__main__":
+if __name__ == "__main__":
     run()

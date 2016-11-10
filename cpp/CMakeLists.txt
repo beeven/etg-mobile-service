@@ -7,7 +7,9 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 find_package(PkgConfig)
 pkg_check_modules(LIBMONGOCXX REQUIRED libmongocxx)
 pkg_check_modules(LIBGRPCPP REQUIRED grpc++)
+pkg_check_modules(LIBCURLPP REQUIRED curlpp)
 include_directories(${LIBMONGOCXX_INCLUDE_DIRS}
+        ${LIBCURLPP_INCLUDE_DIRS}
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${CMAKE_CURRENT_BINARY_DIR})
 
@@ -27,6 +29,9 @@ execute_process(COMMAND protoc -I${PROTO_FILES_DIR} --cpp_out=${CMAKE_CURRENT_BI
 
 
 set(ETG_SERVICE_SOURCE_FILES
+        entry_data.pb.cc
+        entry_data.grpc.pb.cc
+        entry_data_service_impl.cc
         profile.pb.cc
         profile.grpc.pb.cc
         auth.pb.cc
@@ -39,6 +44,7 @@ add_executable(etg_service_server ${ETG_SERVICE_SOURCE_FILES})
 target_link_libraries(etg_service_server
         ${LIBGRPCPP_LIBRARIES}
         ${LIBMONGOCXX_LIBRARIES}
+        ${LIBCURLPP_LIBRARIES}
         pthread
         protobuf
         dl

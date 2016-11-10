@@ -7,7 +7,6 @@ using System.Net.Http;
 
 using Etg.Data.Entry;
 using Grpc.Core;
-using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json.Linq;
 using Google.Protobuf.WellKnownTypes;
 
