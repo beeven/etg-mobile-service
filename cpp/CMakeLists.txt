@@ -13,7 +13,7 @@ include_directories(${LIBMONGOCXX_INCLUDE_DIRS}
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${CMAKE_CURRENT_BINARY_DIR})
 
-set(PROTO_FILES_DIR ${PROJECT_SOURCE_DIR}/../protos)
+set(PROTO_FILES_DIR ${PROJECT_SOURCE_DIR}/protos)
 
 file(GLOB PROTO_FILES
         "${PROTO_FILES_DIR}/*.proto"
