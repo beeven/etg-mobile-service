@@ -137,10 +137,60 @@ void RunServer() {
             "dTFwYANrcu66JrRCuHEBkwP3v0C+a2UIazYMfb1sJVzltTGRcxq/nfeQPMUmfzPi\n"
             "avJfH0jzhbU=\n"
             "-----END CERTIFICATE-----"});
+    options.pem_key_cert_pairs.push_back({
+             "-----BEGIN RSA PRIVATE KEY-----\n"
+             "MIIEowIBAAKCAQEAyuj7zFxx+X07qGDmtkGKhHyALsvYUeVSx7gc4nmaoS+s1Rbt\n"
+             "Ly/cYUyIwFYMJISpZgUSBvPDufPftAQSV4WRkYBpI3romYAccPUP4zqtkV8Vz30z\n"
+             "lhdtDZzghOD+pevHQ6Yl/U0XmRAlDV2nFwummnK7J7uuhPuZspSVAqnaomPmPrgr\n"
+             "+VI4vRwQapwl1ptLFTSDvK3VkkhV9uz5W/IYKIQY2d97cvTOuD0dG1wYIkX7LhCr\n"
+             "4L/cxlv2/YbvomN4UwD3Hmvl2fuL13mmylU/SoSSYH7QniW3xhOLIAfwfRTYG7Qz\n"
+             "7BML92CKLYOg5uXYGLHpSnI/V1PKZY7fkfUX3QIDAQABAoIBAFxBQ8KtwXBCvS4Y\n"
+             "KK1y7SzBgnJEYi0SC+ocTp211lU03OrhiqNqqlNevcpdFRZBbtegtIqOqE3SkMJD\n"
+             "G6fJZd72uFbWWgz4j3XYJgoVMrcmuT7mWN8D9aQ70GT5+y2rHqUmVJ1vQKxqB76k\n"
+             "9wRmWrBcO7WcAoQZ9M6Z+YoFeg9cdxSn1pUE3O19BSBJ+FaaUpRN+h22hIGpdE5d\n"
+             "dRyfGRZNFc+iauc2lPOSrO16Kz0vGg5xAn8qnUs+1JPaPk6mLNzvhsEJJ74PbyTK\n"
+             "YCSMRpFWn/+gXmdK4FolvRrh/Uw6uh6WzsM9OXt876ni+1Z3ERGVtkW2ytZ6pBRL\n"
+             "XNaSQI0CgYEA6QvWm7PxYf90605tyGcyJn9gEWFXV6/5e2dHFoYd5DwaADYY8Jyt\n"
+             "kxDpq6mVkm2WBFRra6D/goPRLW55iuqXGsMrxLbEXJZqhhUoEyf+gSAJMO4y2Ln0\n"
+             "Lu2MYlw85kzpcUeIsifHosHXRqenoI4hBRwLwgToKTLz1FBULUTozysCgYEA3uVG\n"
+             "arFyUHhn93PN/2e9z24JujW8dBIuFg8AWaMuLwx3vRDRByQ93e2OSlflqzaPyYIh\n"
+             "2oQUEFt5OCRvCLrjGBccWHOhuL9D046i8nNDONaX28UHiXoLIjzZimj9NC5vEKmH\n"
+             "9xvQ4/MGqd2xaVkMg/CWp9bdERaFcxtGHQiJ8RcCgYEArMMh7XuQTl3ahzY1HIOk\n"
+             "IfX7eeb3oQHLqTf+8yuprTEA9XclNfpwkr3O/HtTbqHevIb4u2k3AcJGp69mWx1d\n"
+             "t3FIWSREnX7EqXG1q73SZlcheSycdR4lb0Sa9a/7VZ9ez6OAKtJipL2eobpYAiZb\n"
+             "RDZuYP7SPPiQ2axTOtwC2tECgYAlBGbBaV7WxmhdzDm15QC85kVvS2VU0YAd4bfp\n"
+             "KxSMc8GfAJ/2U6qCpOUwq5BU8ubGTHpa0/yRCuAC1uopxP/aDFyExA9jo0Acbl/Z\n"
+             "bBMJ6Xmm4f3ycvZOZVSri+whMmT3m3AdNd1nPgEpTMwd9tABSX97uE9WeysGhs0K\n"
+             "HVTrWQKBgCanFywp6OfplulgNQmqx+rfaGwhurkmvn+T6MAmye1U09wCTAU0ltVF\n"
+             "D6De2rVAzFJMMtG1U4SLBXjZ9qaVr2qYxLnelHD0FsGSKYB4wDIiaeNzMOoV68oI\n"
+             "2So3h2Gjz5WTMSlnLhUwsD8zq8qkzlCCsKEQ/PXNMGONPq8mRrdO\n"
+             "-----END RSA PRIVATE KEY-----",
+            "-----BEGIN CERTIFICATE-----\n"
+            "MIIDrzCCApcCAQQwDQYJKoZIhvcNAQEFBQAwgckxCzAJBgNVBAYTAkNOMRIwEAYD\n"
+            "VQQIEwlHdWFuZ2RvbmcxEjAQBgNVBAcTCUd1YW5nemhvdTEmMCQGA1UEChMdR3Vh\n"
+            "bmd6aG91IEN1c3RvbXMgRGF0YSBDZW50ZXIxIjAgBgNVBAsTGUlUIERldmVsb3Bt\n"
+            "ZW50IERlcGFydG1lbnQxHzAdBgNVBAMTFmVwb3J0Lmd6Y3VzdG9tcy5nb3YuY24x\n"
+            "JTAjBgkqhkiG9w0BCQEWFmFkbWluQGd6Y3VzdG9tcy5nb3YuY24wHhcNMTYxMTEx\n"
+            "MTAzNzUzWhcNMTkxMTExMTAzNzUzWjBxMQswCQYDVQQGEwJDTjESMBAGA1UECAwJ\n"
+            "R3Vhbmdkb25nMRIwEAYDVQQHDAlHdWFuZ3pob3UxDDAKBgNVBAoMA0daQzELMAkG\n"
+            "A1UECwwCSVQxHzAdBgNVBAMMFmVwb3J0Lmd6Y3VzdG9tcy5nb3YuY24wggEiMA0G\n"
+            "CSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDK6PvMXHH5fTuoYOa2QYqEfIAuy9hR\n"
+            "5VLHuBzieZqhL6zVFu0vL9xhTIjAVgwkhKlmBRIG88O589+0BBJXhZGRgGkjeuiZ\n"
+            "gBxw9Q/jOq2RXxXPfTOWF20NnOCE4P6l68dDpiX9TReZECUNXacXC6aacrsnu66E\n"
+            "+5mylJUCqdqiY+Y+uCv5Uji9HBBqnCXWm0sVNIO8rdWSSFX27Plb8hgohBjZ33ty\n"
+            "9M64PR0bXBgiRfsuEKvgv9zGW/b9hu+iY3hTAPcea+XZ+4vXeabKVT9KhJJgftCe\n"
+            "JbfGE4sgB/B9FNgbtDPsEwv3YIotg6Dm5dgYselKcj9XU8pljt+R9RfdAgMBAAEw\n"
+            "DQYJKoZIhvcNAQEFBQADggEBAGpzOnJfep6qhZCxJmDBtgx69DleDSe0D8UZhcDe\n"
+            "s0MsFP3gXwegKODuwPU7wHVL1Y3bpRvE9BlnPz1UcYm+Plutao+Q5c6IpH6QyiYT\n"
+            "tC1Jw+u8n3Agt6oZd4JNl3fzkwk7SiQvzKmiMmvZ/0SQbv+u282DcX0KGS7Drbk+\n"
+            "thyeIFn0g84a3taH5tdH4nQYvanGE3a/7zVu94bd6NUgsl04yJXxfuZ0Trcray7s\n"
+            "e6vgNrhzzf32ML3T2LouXAMMaTu4P56kEcjVgaSWe16YCQsB8enDNeT2Jdi5qtJu\n"
+            "bbtNTyoEg2tpAjXZx103EPYdHp7fwiA4buGAexrivptZAVs=\n"
+            "-----END CERTIFICATE-----"});
 
     std::string server_address("0.0.0.0:8443");
     ServerBuilder builder;
-    //builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());
+    builder.AddListeningPort("0.0.0.0:50052", grpc::InsecureServerCredentials());
     builder.AddListeningPort(server_address, grpc::SslServerCredentials(options));
     builder.RegisterService(&service);
     builder.RegisterService(&data_service);

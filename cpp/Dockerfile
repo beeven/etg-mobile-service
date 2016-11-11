@@ -4,7 +4,7 @@ ADD . /code
 WORKDIR /code
 
 RUN apt-get update && \
-    apt-get install -y libcurlpp-dev libcrypto++-dev git-core curl pkg-config unzip libtool inetutil-syslogd && \
+    apt-get install -y libcurlpp-dev libcrypto++-dev git-core curl pkg-config unzip libtool inetutils-syslogd && \
     cd /tmp && \
     curl -OL https://github.com/mongodb/libbson/releases/download/1.3.6/libbson-1.3.6.tar.gz && \
     tar -xzf libbson-1.3.6.tar.gz && cd libbson-1.3.6 && \
@@ -23,7 +23,7 @@ RUN apt-get update && \
     curl -OL https://github.com/miloyip/rapidjson/archive/v1.1.0.tar.gz && \
     tar -xzf v1.1.0.tar.gz && cd rapidjson-1.1.0 && \
     cp -R ./include/rapidjson /usr/local/include/ && cd /tmp && \
-    ldconfig && cat "local1.*    /var/log/etgservice.log" >> /etc/syslog.conf && /etc/init.d/inetutil-syslogd restart
+    ldconfig && cat "local1.*    /var/log/etgservice.log" >> /etc/syslog.conf && /etc/init.d/inetutils-syslogd restart
 
 RUN mkdir -p /code/cpp/build && cd /code/cpp/build && \
     cmake ../ && make
