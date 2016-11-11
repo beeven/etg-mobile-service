@@ -23,7 +23,7 @@ RUN apt-get update && \
     curl -OL https://github.com/miloyip/rapidjson/archive/v1.1.0.tar.gz && \
     tar -xzf v1.1.0.tar.gz && cd rapidjson-1.1.0 && \
     cp -R ./include/rapidjson /usr/local/include/ && cd /tmp && \
-    ldconfig && cat "local1.*    /var/log/etgservice.log" >> /etc/syslog.conf && /etc/init.d/inetutils-syslogd restart
+    ldconfig && echo "local1.*    /var/log/etgservice.log" >> /etc/syslog.conf && /etc/init.d/inetutils-syslogd restart
 
 RUN mkdir -p /code/cpp/build && cd /code/cpp/build && \
     cmake ../ && make
