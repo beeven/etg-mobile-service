@@ -25,9 +25,9 @@ RUN apt-get update && \
     cp -R ./include/rapidjson /usr/local/include/ && cd /tmp && \
     ldconfig && echo "local1.*    /var/log/etgservice.log" >> /etc/syslog.conf && /etc/init.d/inetutils-syslogd restart
 
-RUN mkdir -p /code/cpp/build && cd /code/cpp/build && \
+RUN mkdir -p /code/build && cd /code/build && \
     cmake ../ && make
 
 EXPOSE 8443 50052
 
-CMD ["/code/cpp/build/etg_service_server"]
+CMD ["/code/build/etg_service_server"]
