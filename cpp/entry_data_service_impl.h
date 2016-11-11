@@ -36,6 +36,7 @@ namespace entry {
 
     public:
         explicit EntryDataServiceImpl();
+        ~EntryDataServiceImpl();
 
         Status GetEntryStatus(ServerContext *context,
                               ServerReaderWriter<GetEntryStatusResponse, GetEntryStatusRequest> *stream) override;

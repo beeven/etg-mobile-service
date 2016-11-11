@@ -5,7 +5,7 @@
 #include <memory>
 #include <string>
 #include <sys/time.h>
-
+#include <syslog.h>
 #include <grpc/grpc.h>
 #include <grpc++/server.h>
 #include <grpc++/server_builder.h>
@@ -49,6 +49,7 @@ class EtgServiceImpl final : public Auth::Service {
 };
 
 void RunServer() {
+    setlogmask(LOG_UPTO(LOG_DEBUG));
 
     EtgServiceImpl service;
     etg::data::entry::EntryDataServiceImpl data_service;

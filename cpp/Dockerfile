@@ -1,10 +1,10 @@
-FROM ubuntu:latest
+FROM grpc/cxx:latest
 
 ADD . /code
 WORKDIR /code
 
 RUN apt-get update && \
-    apt-get install -y libcurlpp-dev libcrypto++-dev git-core curl pkg-config && \
+    apt-get install -y libcurlpp-dev libcrypto++-dev git-core curl pkg-config unzip libtool inetutil-syslogd && \
     cd /tmp && \
     curl -OL https://github.com/mongodb/libbson/releases/download/1.3.6/libbson-1.3.6.tar.gz && \
     tar -xzf libbson-1.3.6.tar.gz && cd libbson-1.3.6 && \
@@ -22,13 +22,8 @@ RUN apt-get update && \
     make && make install && cd /tmp && \
     curl -OL https://github.com/miloyip/rapidjson/archive/v1.1.0.tar.gz && \
     tar -xzf v1.1.0.tar.gz && cd rapidjson-1.1.0 && \
-    cp -R ./include/rapidjson /usr/local/include/ && cd /tmp
-
-RUN git clone https://github.com/grpc/grpc && \
-    cd grpc && git submodule update --init && \
-    cd ./third_party/protobuf && \
-    ./autogen.sh && ./configure && make && make install && \
-    cd ../../ && make && make install
+    cp -R ./include/rapidjson /usr/local/include/ && cd /tmp && \
+    ldconfig && cat "local1.*    /var/log/etgservice.log" >> /etc/syslog.conf && /etc/init.d/inetutil-syslogd restart
 
 RUN mkdir -p /code/cpp/build && cd /code/cpp/build && \
     cmake ../ && make

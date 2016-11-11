@@ -19,7 +19,8 @@
 
 #include <rapidjson/document.h>
 
-//#include <google/protobuf/timestamp.pb.h>
+#include <google/protobuf/timestamp.pb.h>
+#include <syslog.h>
 
 #include "entry_data.grpc.pb.h"
 #include "entry_data_service_impl.h"
@@ -39,6 +40,10 @@ using std::chrono::system_clock;
 using etg::data::entry::EntryDataServiceImpl;
 
 EntryDataServiceImpl::EntryDataServiceImpl() {
+    openlog("EtgEntryDataService", LOG_CONS | LOG_PID | LOG_NDELAY, LOG_LOCAL1);
+}
+EntryDataServiceImpl::~EntryDataServiceImpl() {
+    closelog();
 }
 
 Status EntryDataServiceImpl::GetEntryStatus(ServerContext *context,
@@ -49,6 +54,7 @@ Status EntryDataServiceImpl::GetEntryStatus(ServerContext *context,
         EntryStatus entryStatus;
         GetEntryStatusResponse response;
         response.set_entry_id(request.entry_id());
+        syslog(LOG_DEBUG, "Get entry status request received: %s", request.entry_id().c_str());
         if( this->QueryEntryStatus(request.entry_id(),&entryStatus) ) {
             response.set_status_text(entryStatus.status_text);
             auto timestamp = new google::protobuf::Timestamp();
@@ -57,7 +63,9 @@ Status EntryDataServiceImpl::GetEntryStatus(ServerContext *context,
         } else {
             response.set_status_text("没有此报关单信息");
         }
+
         stream->Write(response);
+        syslog(LOG_DEBUG, "Get entry status response sent: %s %s", response.entry_id().c_str(), response.status_text().c_str());
     }
     return Status::OK;
 }
@@ -89,10 +97,12 @@ bool EntryDataServiceImpl::QueryEntryStatus(const std::string &entry_id, EntrySt
 
     }
     catch (curlpp::RuntimeError &e) {
-        std::cout << e.what() << std::endl;
+        //std::cout << e.what() << std::endl;
+        syslog(LOG_DEBUG,"Get entry status runtime error: %s", e.what());
     }
     catch (curlpp::LogicError &e) {
-        std::cout << e.what() << std::endl;
+        //std::cout << e.what() << std::endl;
+        syslog(LOG_DEBUG,"Get entry status logic error: %s", e.what());
     }
     return false;
 }
