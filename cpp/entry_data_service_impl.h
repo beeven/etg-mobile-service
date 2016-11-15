@@ -35,13 +35,14 @@ namespace entry {
     class EntryDataServiceImpl final : public EntryDataService::Service {
 
     public:
-        explicit EntryDataServiceImpl();
+        explicit EntryDataServiceImpl(const char* pop_service_url);
         ~EntryDataServiceImpl();
 
         Status GetEntryStatus(ServerContext *context,
                               ServerReaderWriter<GetEntryStatusResponse, GetEntryStatusRequest> *stream) override;
 
     private:
+        std::string pop_service_url;
         struct EntryStatus {
             std::string status_text;
             std::string declare_date;

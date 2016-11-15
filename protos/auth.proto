@@ -1,0 +1,105 @@
+syntax = "proto3";
+import public "profile.proto";
+import "google/protobuf/timestamp.proto";
+
+
+option objc_class_prefix = "ETG";
+option java_multiple_files = true;
+option java_package = "etg.auth";
+option java_outer_classname = "EtgProto";
+option csharp_namespace = "Etg.Auth";
+
+package etg.auth;
+
+
+message GetCaptchaImageRequest {
+}
+
+message GetCaptchaImageResponse {
+    string captcha_id = 1;
+    bytes image_data = 2;
+}
+
+message SendTokenToContactRequest {
+    string company_id = 1; // trade_co or social_credit_code
+    string captcha_id = 2; // captcha image id
+    string captcha = 3;   // captcha image 
+}
+
+message SendTokenToContactResponse {
+    bool is_successful = 1;
+    string mobile = 2;  // which mobile has sent to
+    string message = 3;
+    string captcha_id = 4; // captcha id for token sent to contact's mobile
+}
+
+
+
+enum LoginType {
+    EMAIL = 0;
+    COMPANY_ID = 1;
+}
+
+message LoginRequest {
+    LoginType login_type = 1;
+    string email = 2;
+    string hashed_passwd = 3;
+    string company_id = 4;  // trade_co or social_credit_code
+    string captcha_id = 5;
+    string token = 6;  // token sent to contact's mobile
+    string access_token = 7; // login and renew access_token
+}
+
+message LoginResponse {
+    bool is_successful = 1;
+    string message = 2;
+    string access_token = 3;
+    google.protobuf.Timestamp timestamp_expire_at = 4;
+    etg.profile.UserProfile user = 5;
+    etg.profile.CompanyProfile company = 6;
+}
+
+message LogoutRequest {
+    string access_token = 1;
+}
+
+message LogoutResponse {
+    bool is_successful = 1;
+}
+
+message RegisterWithCompanyIdRequest {
+    string company_id = 1;
+    string captcha_id = 2;
+    string token = 3;
+    string hashed_passwd = 4;
+    string email = 5;
+}
+
+message RegisterWithCompanyIdResponse {
+    bool is_successful = 1;
+    string message = 2;
+    string access_token = 3;
+}
+
+message ResetPasswordWithCompanyIdRequest {
+    string company_id = 1;   // trade_co or social_credit_code
+    string captcha_id = 2;
+    string token = 3;
+    string hashed_passwd = 4;  // new password
+}
+
+message ResetPasswordWithCompanyIdResponse {
+    bool is_successful = 1;
+    string message = 2;
+}
+
+
+
+service Auth {
+    rpc GetCaptchaImage(GetCaptchaImageRequest) returns (GetCaptchaImageResponse) {}
+    rpc SendTokenToContact(SendTokenToContactRequest) returns (SendTokenToContactResponse) {}
+    rpc Login(LoginRequest) returns (LoginResponse) {}
+    rpc Logout(LogoutRequest) returns (LogoutResponse) {}
+    rpc RegisterWithCompanyId(RegisterWithCompanyIdRequest) returns (RegisterWithCompanyIdResponse) {}
+    rpc ResetPasswordWithCompanyId(RegisterWithCompanyIdRequest) returns (RegisterWithCompanyIdResponse) {}
+}

@@ -39,8 +39,9 @@ using std::chrono::system_clock;
 
 using etg::data::entry::EntryDataServiceImpl;
 
-EntryDataServiceImpl::EntryDataServiceImpl() {
+EntryDataServiceImpl::EntryDataServiceImpl(const char* pop_service_url) {
     openlog("EtgEntryDataService", LOG_CONS | LOG_PID | LOG_NDELAY, LOG_LOCAL1);
+    this->pop_service_url = pop_service_url;
 }
 EntryDataServiceImpl::~EntryDataServiceImpl() {
     closelog();
@@ -76,7 +77,7 @@ bool EntryDataServiceImpl::QueryEntryStatus(const std::string &entry_id, EntrySt
         {
             curlpp::Cleanup myCleanup;
             curlpp::Easy myRequest;
-            std::string requestUrl("http://10.53.34.180:3001/entry_pop/api/entry/");
+            std::string requestUrl = this->pop_service_url;
             requestUrl.append(entry_id);
             myRequest.setOpt<curlpp::options::Url>(requestUrl);
             std::ostringstream oss;

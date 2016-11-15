@@ -1,0 +1,21 @@
+﻿{
+  "version": "1.0.0",
+  "buildOptions": {"debugType": "portable"},
+
+  "dependencies": {
+    "Google.Protobuf": "3.1.0",
+    "Grpc": "1.0.1",
+    "NewtonSoft.Json": "9.0.1",
+    "Redis-64": "3.0.503"
+  },
+
+  "frameworks": {
+    "net461": {
+      "frameworkAssemblies": {
+        "System.Runtime": "",
+        "System.IO": "",
+        "System.Net.Http": ""
+      } 
+    }
+  }
+}

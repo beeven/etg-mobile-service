@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+
+
+option objc_class_prefix = "ETG";
+option java_multiple_files = true;
+option java_package = "etg.profile";
+option java_outer_classname = "EtgProto";
+option csharp_namespace = "Etg.Profile";
+
+package etg.profile;
+
+message UserProfile {
+    string name = 1;
+    string email = 2;
+    string mobile = 3;
+    uint32 authentication_mode = 4;
+}
+
+message CompanyProfile {
+    string company_id = 1;
+    string org_co = 2;
+    string social_credit_code  = 3;
+    string name = 4;
+    string contact_name = 5;
+    string contact_mobile = 6;
+    string law_man_name = 7;
+    string law_man_mobile = 8;
+}
+
+message UpdateProfileRequest {
+    string access_token = 1;
+    string name = 2;
+    string email = 3;
+    string mobile = 4;
+    string newPasswd = 5;
+}
+
+message UpdateProfileResponse {
+    bool is_successful = 1;
+    string message = 2;
+}
+
+service Profile {
+    rpc UpdateProfile(UpdateProfileRequest) returns (UpdateProfileResponse) {}
+}

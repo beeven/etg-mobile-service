@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EtgService", "EtgService\EtgService.csproj", "{40B19385-AAE2-4FB6-B173-BE71901C01C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntryData", "EntryData\EntryData.csproj", "{009F92EC-99F1-412E-81EA-09EE09742CAF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{40B19385-AAE2-4FB6-B173-BE71901C01C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40B19385-AAE2-4FB6-B173-BE71901C01C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40B19385-AAE2-4FB6-B173-BE71901C01C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40B19385-AAE2-4FB6-B173-BE71901C01C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{009F92EC-99F1-412E-81EA-09EE09742CAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{009F92EC-99F1-412E-81EA-09EE09742CAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{009F92EC-99F1-412E-81EA-09EE09742CAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{009F92EC-99F1-412E-81EA-09EE09742CAF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

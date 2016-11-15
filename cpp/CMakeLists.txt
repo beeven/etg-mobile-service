@@ -8,8 +8,10 @@ find_package(PkgConfig)
 pkg_check_modules(LIBMONGOCXX REQUIRED libmongocxx)
 pkg_check_modules(LIBGRPCPP REQUIRED grpc++)
 pkg_check_modules(LIBCURLPP REQUIRED curlpp)
+pkg_check_modules(LIBCONFIGXX REQUIRED libconfig++>=1.4)
 include_directories(${LIBMONGOCXX_INCLUDE_DIRS}
         ${LIBCURLPP_INCLUDE_DIRS}
+        ${LIBCONFIGXX_INCLUDE_DIRS}
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${CMAKE_CURRENT_BINARY_DIR})
 
@@ -45,6 +47,7 @@ target_link_libraries(etg_service_server
         ${LIBGRPCPP_LIBRARIES}
         ${LIBMONGOCXX_LIBRARIES}
         ${LIBCURLPP_LIBRARIES}
+        ${LIBCONFIGXX_LIBRARIES}
         pthread
         protobuf
         dl

@@ -1,8 +1,5 @@
 FROM grpc/cxx:latest
 
-ADD . /code
-WORKDIR /code
-
 RUN apt-get update && \
     apt-get install -y libcurlpp-dev libcrypto++-dev git-core curl pkg-config unzip libtool inetutils-syslogd libcurl4-openssl-dev && \
     cd /tmp && \
@@ -25,9 +22,12 @@ RUN apt-get update && \
     cp -R ./include/rapidjson /usr/local/include/ && cd /tmp && \
     ldconfig && echo "local1.*    /var/log/etgservice.log" >> /etc/syslog.conf && /etc/init.d/inetutils-syslogd restart
 
-RUN mkdir -p /code/build && cd /code/build && \
+ADD . /code
+WORKDIR /code
+
+RUN mkdir -p /code/cpp/build && cd /code/cpp/build && \
     cmake ../ && make
 
 EXPOSE 8443 50052
 
-CMD ["/code/build/etg_service_server"]
+CMD /code/build/etg_service_server

@@ -20,6 +20,8 @@ python/*_pb2.py
 
 # csharp
 
-csharp/bin/
-csharp/obj/
-csharp/project.lock.json
+csharp/**/bin/
+csharp/**/obj/
+csharp/**/project.lock.json
+csharp/**/packages/
+csharp/**/*.xproj.user

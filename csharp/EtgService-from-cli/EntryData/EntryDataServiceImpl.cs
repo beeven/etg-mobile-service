@@ -5,13 +5,12 @@ using System.Collections.Generic;
 using System.Collections.Concurrent;
 using System.Net.Http;
 
-using Etg.Data.Entry;
 using Grpc.Core;
 using Newtonsoft.Json.Linq;
 using Google.Protobuf.WellKnownTypes;
 
 
-namespace EtgServiceServer
+namespace Etg.Data.Entry
 {
     public class EntryDataServiceImpl : EntryDataService.EntryDataServiceBase
     {

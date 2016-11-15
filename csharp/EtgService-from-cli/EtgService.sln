@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "EtgService", "EtgService\EtgService.xproj", "{E659B5C5-218D-4B86-8A0D-4383F19CE30D}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "EntryData", "EntryData\EntryData.xproj", "{FF022570-E1CE-44D9-9AF1-4EF5AE345458}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E659B5C5-218D-4B86-8A0D-4383F19CE30D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E659B5C5-218D-4B86-8A0D-4383F19CE30D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E659B5C5-218D-4B86-8A0D-4383F19CE30D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E659B5C5-218D-4B86-8A0D-4383F19CE30D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF022570-E1CE-44D9-9AF1-4EF5AE345458}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF022570-E1CE-44D9-9AF1-4EF5AE345458}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF022570-E1CE-44D9-9AF1-4EF5AE345458}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF022570-E1CE-44D9-9AF1-4EF5AE345458}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
