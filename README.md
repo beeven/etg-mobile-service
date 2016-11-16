@@ -16,9 +16,8 @@
 
 ## Server 部署步骤
 ### Windows
-0. 根据即将部署的服务器域名生成证书，添加到 csharp/EtgService/EtgService/EtgService.cs 中
 1. 编译生成 csharp/EtgService 下的解决方案
-2. 命令行执行 csharp/EtgService/EtgService 项目，看是否能正确执行，根据需求修改 appsettings.json 配置文件
+2. 命令行执行 csharp/EtgService/EtgService 项目，看是否能正确执行，根据即将部署的服务器域名生成证书，添加到 csharp/EtgService/EtgService/appsettings.json 中
 3. 使用 sc 命令创建 Windows 服务：`sc create EtgService binPath= 'x:\.....\EtgService.exe'`
 4. 启动服务
 

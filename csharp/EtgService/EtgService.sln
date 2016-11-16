@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EtgService", "EtgService\Et
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntryData", "EntryData\EntryData.csproj", "{009F92EC-99F1-412E-81EA-09EE09742CAF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EtgServiceClient", "EtgServiceClient\EtgServiceClient.csproj", "{922C2EE2-5596-4B81-8858-B24A136C58F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{009F92EC-99F1-412E-81EA-09EE09742CAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{009F92EC-99F1-412E-81EA-09EE09742CAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{009F92EC-99F1-412E-81EA-09EE09742CAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{922C2EE2-5596-4B81-8858-B24A136C58F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{922C2EE2-5596-4B81-8858-B24A136C58F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{922C2EE2-5596-4B81-8858-B24A136C58F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{922C2EE2-5596-4B81-8858-B24A136C58F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
