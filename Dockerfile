@@ -1,7 +1,7 @@
 FROM grpc/cxx:latest
 
 RUN apt-get update && \
-    apt-get install -y libcurlpp-dev libcrypto++-dev git-core curl pkg-config unzip libtool inetutils-syslogd libcurl4-openssl-dev && \
+    apt-get install -y libcurlpp-dev libcrypto++-dev git-core curl pkg-config unzip libtool inetutils-syslogd libcurl4-openssl-dev libconfig++-dev && \
     cd /tmp && \
     curl -OL https://github.com/mongodb/libbson/releases/download/1.3.6/libbson-1.3.6.tar.gz && \
     tar -xzf libbson-1.3.6.tar.gz && cd libbson-1.3.6 && \
