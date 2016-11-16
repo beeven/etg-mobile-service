@@ -9,13 +9,14 @@ import entry_data_pb2
 
 def generate_entry_ids():
     """Generate ids iterator"""
-    entryIds = ["518920160896053556", "516620160666505983",
-                "518920160896053557", "51520160536088309"]
-    for entry in entryIds:
+    entry_ids = ["518920160896053556", "516620160666505983",
+                 "518920160896053557", "51520160536088309"]
+    for entry in entry_ids:
         yield entry_data_pb2.GetEntryStatusRequest(entry_id=entry)
 
 
 def query(stub):
+    """connect to server using stub object"""
     replies = stub.GetEntryStatus(generate_entry_ids())
     for reply in replies:
         print("{0}:{1}\t{2}".format(reply.entry_id,
@@ -23,7 +24,7 @@ def query(stub):
 
 
 def run():
-    
+    """setup server"""
     credential = grpc.ssl_channel_credentials("""-----BEGIN CERTIFICATE-----
 MIIFSzCCBDOgAwIBAgIJAK1eE69OSQpDMA0GCSqGSIb3DQEBBQUAMIHJMQswCQYD
 VQQGEwJDTjESMBAGA1UECBMJR3Vhbmdkb25nMRIwEAYDVQQHEwlHdWFuZ3pob3Ux
@@ -104,7 +105,7 @@ xbvY5K5LEVc2wLW8B+5sgKqbQHneDbWts1SHSaCm349QXTk8fay+Wp85xY/Djo4v
 EIPEmy8vEcQxBwnagYN4QORECFfVlj0ISMXjhYn1ZOOUjUJohOGs8iK8Teo=
 -----END CERTIFICATE-----""")
     channel = grpc.secure_channel('localhost:8443', credential)
-    #channel = grpc.insecure_channel('localhost:50052')
+    #channel = grpc.insecure_channel('gzeport.gzcustoms.gov.cn:8080')
     stub = entry_data_pb2.EntryDataServiceStub(channel)
     query(stub)
 

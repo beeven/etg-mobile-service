@@ -32,7 +32,7 @@ namespace Etg.Service
                             while (await call.ResponseStream.MoveNext())
                             {
                                 var entryStatus = call.ResponseStream.Current;
-                                Console.WriteLine("EntryId: {0}\tStatus: {1}\tDeclareDate: {2}", entryStatus.EntryId, entryStatus.StatusText, entryStatus.DeclareDate.ToDateTime());
+                                Console.WriteLine("EntryId: {0}\tStatus: {1}\tDeclareDate: {2}", entryStatus.EntryId, entryStatus.StatusText, entryStatus.DeclareDate?.ToDateTime());
                             }
                         });
 
@@ -54,7 +54,7 @@ namespace Etg.Service
         }
         static void Main(string[] args)
         {
-            Channel channel = new Channel("localhost:50052", ChannelCredentials.Insecure);
+            Channel channel = new Channel("gzeport.gzcustoms.gov.cn:8080", ChannelCredentials.Insecure);
             var client = new EtgServiceClient(new EntryDataService.EntryDataServiceClient(channel));
             client.GetEntryStatus().Wait();
             channel.ShutdownAsync().Wait();
