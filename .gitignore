@@ -15,7 +15,7 @@ cpp/build/
 
 # python
 python/__pycache__/
-python/*_pb2.py
+python/*.pyc
 
 
 # csharp
