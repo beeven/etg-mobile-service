@@ -8,7 +8,7 @@
 1. 参考[gRPC网站](https://grpc.io)安装对应语言版本的gRPC环境
 2. 根据protos文件夹里面的 .proto 文件生成对应的文件，添加到项目中
 3. 使用`openssl`等工具生成证书签名请求，发给 administrator@gzcustoms.gov.cn ，由海关签名生成证书后发回
-4. 将证书与key应用到client的channel中，服务器地址是 gzeport.gzcustoms.gov.cn:8443 
+4. 将证书与key应用到client的channel中，服务器地址是 gzeport.gzcustoms.gov.cn:8080
 
 ## Client示例
 [python/entry_data_client.py](python/entry_data_client.py)
@@ -17,6 +17,7 @@
 
 ## Server 部署步骤
 ### Windows
+0. 在部署环境安装 [OpenSSL](https://slproweb.com/products/Win32OpenSSL.html)
 1. 编译生成 csharp/EtgService 下的解决方案
 2. 命令行执行 csharp/EtgService/EtgService 项目，看是否能正确执行，根据即将部署的服务器域名生成证书，添加到 csharp/EtgService/EtgService/appsettings.json 中
 3. 使用 `sc` 命令创建 Windows 服务：`sc create EtgService binPath= 'x:\.....\EtgService.exe --service'`

@@ -35,13 +35,16 @@ using grpc::Status;
 using etg::data::entry::EntryDataService;
 using etg::data::entry::GetEntryStatusRequest;
 using etg::data::entry::GetEntryStatusResponse;
+using etg::data::entry::GetYDTEntryDataResponse;
+using etg::data::entry::GetYDTEntryDataRequest;
 using std::chrono::system_clock;
 
 using etg::data::entry::EntryDataServiceImpl;
 
-EntryDataServiceImpl::EntryDataServiceImpl(const char* pop_service_url) {
+EntryDataServiceImpl::EntryDataServiceImpl(const char* pop_service_url, const char* data_file_path) {
     openlog("EtgEntryDataService", LOG_CONS | LOG_PID | LOG_NDELAY, LOG_LOCAL1);
     this->pop_service_url = pop_service_url;
+    this->data_file_path = data_file_path;
 }
 EntryDataServiceImpl::~EntryDataServiceImpl() {
     closelog();
@@ -68,6 +71,12 @@ Status EntryDataServiceImpl::GetEntryStatus(ServerContext *context,
         stream->Write(response);
         syslog(LOG_DEBUG, "Get entry status response sent: %s %s", response.entry_id().c_str(), response.status_text().c_str());
     }
+    return Status::OK;
+}
+
+Status EntryDataServiceImpl::GetYDTEntryData(ServerContext *context, const GetYDTEntryDataRequest *request,
+                                             ServerWriter<GetYDTEntryDataResponse> *writer) {
+
     return Status::OK;
 }
 

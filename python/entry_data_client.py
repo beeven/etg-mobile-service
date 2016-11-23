@@ -25,9 +25,9 @@ def query(stub):
 
 def run():
     """setup server"""
-    with open('../certs/ca.crt','rb') as f:
+    with open('../certs/ca.crt', 'rb') as f:
         ca_cert = f.read()
-    with open('../certs/yidatong.key','rb') as f:
+    with open('../certs/yidatong.key', 'rb') as f:
         key = f.read()
     with open('../certs/yidatong.crt', 'rb') as f:
         cert = f.read()

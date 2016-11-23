@@ -52,7 +52,7 @@ void RunServer() {
     setlogmask(LOG_UPTO(LOG_DEBUG));
 
     EtgServiceImpl service;
-    etg::data::entry::EntryDataServiceImpl data_service("http://10.53.1.181:3000/entry_pop/api/entry/");
+    etg::data::entry::EntryDataServiceImpl data_service("http://10.53.1.181:3000/entry_pop/api/entry/","/tmp");
 
     grpc::SslServerCredentialsOptions options;
     options.force_client_auth = true;

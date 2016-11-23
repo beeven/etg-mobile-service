@@ -27,6 +27,8 @@ using grpc::Status;
 using etg::data::entry::EntryDataService;
 using etg::data::entry::GetEntryStatusRequest;
 using etg::data::entry::GetEntryStatusResponse;
+using etg::data::entry::GetYDTEntryDataRequest;
+using etg::data::entry::GetYDTEntryDataResponse;
 
 namespace etg {
 namespace data {
@@ -35,14 +37,18 @@ namespace entry {
     class EntryDataServiceImpl final : public EntryDataService::Service {
 
     public:
-        explicit EntryDataServiceImpl(const char* pop_service_url);
+        explicit EntryDataServiceImpl(const char* pop_service_url, const char* data_file_path);
         ~EntryDataServiceImpl();
 
         Status GetEntryStatus(ServerContext *context,
                               ServerReaderWriter<GetEntryStatusResponse, GetEntryStatusRequest> *stream) override;
 
+        Status GetYDTEntryData(ServerContext *context,
+                               const GetYDTEntryDataRequest* request, ServerWriter<GetYDTEntryDataResponse>* writer) override;
+
     private:
         std::string pop_service_url;
+        std::string data_file_path;
         struct EntryStatus {
             std::string status_text;
             std::string declare_date;

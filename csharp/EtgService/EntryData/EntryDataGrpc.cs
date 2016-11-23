@@ -14,6 +14,8 @@ namespace Etg.Data.Entry {
 
     static readonly Marshaller<global::Etg.Data.Entry.GetEntryStatusRequest> __Marshaller_GetEntryStatusRequest = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Etg.Data.Entry.GetEntryStatusRequest.Parser.ParseFrom);
     static readonly Marshaller<global::Etg.Data.Entry.GetEntryStatusResponse> __Marshaller_GetEntryStatusResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Etg.Data.Entry.GetEntryStatusResponse.Parser.ParseFrom);
+    static readonly Marshaller<global::Etg.Data.Entry.GetYDTEntryDataRequest> __Marshaller_GetYDTEntryDataRequest = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Etg.Data.Entry.GetYDTEntryDataRequest.Parser.ParseFrom);
+    static readonly Marshaller<global::Etg.Data.Entry.GetYDTEntryDataResponse> __Marshaller_GetYDTEntryDataResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Etg.Data.Entry.GetYDTEntryDataResponse.Parser.ParseFrom);
 
     static readonly Method<global::Etg.Data.Entry.GetEntryStatusRequest, global::Etg.Data.Entry.GetEntryStatusResponse> __Method_GetEntryStatus = new Method<global::Etg.Data.Entry.GetEntryStatusRequest, global::Etg.Data.Entry.GetEntryStatusResponse>(
         MethodType.DuplexStreaming,
@@ -21,6 +23,13 @@ namespace Etg.Data.Entry {
         "GetEntryStatus",
         __Marshaller_GetEntryStatusRequest,
         __Marshaller_GetEntryStatusResponse);
+
+    static readonly Method<global::Etg.Data.Entry.GetYDTEntryDataRequest, global::Etg.Data.Entry.GetYDTEntryDataResponse> __Method_GetEntryData = new Method<global::Etg.Data.Entry.GetYDTEntryDataRequest, global::Etg.Data.Entry.GetYDTEntryDataResponse>(
+        MethodType.ServerStreaming,
+        __ServiceName,
+        "GetEntryData",
+        __Marshaller_GetYDTEntryDataRequest,
+        __Marshaller_GetYDTEntryDataResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -32,6 +41,11 @@ namespace Etg.Data.Entry {
     public abstract class EntryDataServiceBase
     {
       public virtual global::System.Threading.Tasks.Task GetEntryStatus(IAsyncStreamReader<global::Etg.Data.Entry.GetEntryStatusRequest> requestStream, IServerStreamWriter<global::Etg.Data.Entry.GetEntryStatusResponse> responseStream, ServerCallContext context)
+      {
+        throw new RpcException(new Status(StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task GetEntryData(global::Etg.Data.Entry.GetYDTEntryDataRequest request, IServerStreamWriter<global::Etg.Data.Entry.GetYDTEntryDataResponse> responseStream, ServerCallContext context)
       {
         throw new RpcException(new Status(StatusCode.Unimplemented, ""));
       }
@@ -69,6 +83,14 @@ namespace Etg.Data.Entry {
       {
         return CallInvoker.AsyncDuplexStreamingCall(__Method_GetEntryStatus, null, options);
       }
+      public virtual AsyncServerStreamingCall<global::Etg.Data.Entry.GetYDTEntryDataResponse> GetEntryData(global::Etg.Data.Entry.GetYDTEntryDataRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return GetEntryData(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual AsyncServerStreamingCall<global::Etg.Data.Entry.GetYDTEntryDataResponse> GetEntryData(global::Etg.Data.Entry.GetYDTEntryDataRequest request, CallOptions options)
+      {
+        return CallInvoker.AsyncServerStreamingCall(__Method_GetEntryData, null, options, request);
+      }
       protected override EntryDataServiceClient NewInstance(ClientBaseConfiguration configuration)
       {
         return new EntryDataServiceClient(configuration);
@@ -79,7 +101,8 @@ namespace Etg.Data.Entry {
     public static ServerServiceDefinition BindService(EntryDataServiceBase serviceImpl)
     {
       return ServerServiceDefinition.CreateBuilder()
-          .AddMethod(__Method_GetEntryStatus, serviceImpl.GetEntryStatus).Build();
+          .AddMethod(__Method_GetEntryStatus, serviceImpl.GetEntryStatus)
+          .AddMethod(__Method_GetEntryData, serviceImpl.GetEntryData).Build();
     }
 
   }
