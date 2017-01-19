@@ -24,10 +24,17 @@ namespace Etg.Data.Entry {
         __Marshaller_GetEntryStatusRequest,
         __Marshaller_GetEntryStatusResponse);
 
-    static readonly Method<global::Etg.Data.Entry.GetYDTEntryDataRequest, global::Etg.Data.Entry.GetYDTEntryDataResponse> __Method_GetEntryData = new Method<global::Etg.Data.Entry.GetYDTEntryDataRequest, global::Etg.Data.Entry.GetYDTEntryDataResponse>(
+    static readonly Method<global::Etg.Data.Entry.GetYDTEntryDataRequest, global::Etg.Data.Entry.GetYDTEntryDataResponse> __Method_GetYDTEntryDataFrom = new Method<global::Etg.Data.Entry.GetYDTEntryDataRequest, global::Etg.Data.Entry.GetYDTEntryDataResponse>(
         MethodType.ServerStreaming,
         __ServiceName,
-        "GetEntryData",
+        "GetYDTEntryDataFrom",
+        __Marshaller_GetYDTEntryDataRequest,
+        __Marshaller_GetYDTEntryDataResponse);
+
+    static readonly Method<global::Etg.Data.Entry.GetYDTEntryDataRequest, global::Etg.Data.Entry.GetYDTEntryDataResponse> __Method_GetYDTEntryDataAt = new Method<global::Etg.Data.Entry.GetYDTEntryDataRequest, global::Etg.Data.Entry.GetYDTEntryDataResponse>(
+        MethodType.Unary,
+        __ServiceName,
+        "GetYDTEntryDataAt",
         __Marshaller_GetYDTEntryDataRequest,
         __Marshaller_GetYDTEntryDataResponse);
 
@@ -45,7 +52,12 @@ namespace Etg.Data.Entry {
         throw new RpcException(new Status(StatusCode.Unimplemented, ""));
       }
 
-      public virtual global::System.Threading.Tasks.Task GetEntryData(global::Etg.Data.Entry.GetYDTEntryDataRequest request, IServerStreamWriter<global::Etg.Data.Entry.GetYDTEntryDataResponse> responseStream, ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task GetYDTEntryDataFrom(global::Etg.Data.Entry.GetYDTEntryDataRequest request, IServerStreamWriter<global::Etg.Data.Entry.GetYDTEntryDataResponse> responseStream, ServerCallContext context)
+      {
+        throw new RpcException(new Status(StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::Etg.Data.Entry.GetYDTEntryDataResponse> GetYDTEntryDataAt(global::Etg.Data.Entry.GetYDTEntryDataRequest request, ServerCallContext context)
       {
         throw new RpcException(new Status(StatusCode.Unimplemented, ""));
       }
@@ -83,13 +95,29 @@ namespace Etg.Data.Entry {
       {
         return CallInvoker.AsyncDuplexStreamingCall(__Method_GetEntryStatus, null, options);
       }
-      public virtual AsyncServerStreamingCall<global::Etg.Data.Entry.GetYDTEntryDataResponse> GetEntryData(global::Etg.Data.Entry.GetYDTEntryDataRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      public virtual AsyncServerStreamingCall<global::Etg.Data.Entry.GetYDTEntryDataResponse> GetYDTEntryDataFrom(global::Etg.Data.Entry.GetYDTEntryDataRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
       {
-        return GetEntryData(request, new CallOptions(headers, deadline, cancellationToken));
+        return GetYDTEntryDataFrom(request, new CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual AsyncServerStreamingCall<global::Etg.Data.Entry.GetYDTEntryDataResponse> GetEntryData(global::Etg.Data.Entry.GetYDTEntryDataRequest request, CallOptions options)
+      public virtual AsyncServerStreamingCall<global::Etg.Data.Entry.GetYDTEntryDataResponse> GetYDTEntryDataFrom(global::Etg.Data.Entry.GetYDTEntryDataRequest request, CallOptions options)
       {
-        return CallInvoker.AsyncServerStreamingCall(__Method_GetEntryData, null, options, request);
+        return CallInvoker.AsyncServerStreamingCall(__Method_GetYDTEntryDataFrom, null, options, request);
+      }
+      public virtual global::Etg.Data.Entry.GetYDTEntryDataResponse GetYDTEntryDataAt(global::Etg.Data.Entry.GetYDTEntryDataRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return GetYDTEntryDataAt(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Etg.Data.Entry.GetYDTEntryDataResponse GetYDTEntryDataAt(global::Etg.Data.Entry.GetYDTEntryDataRequest request, CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetYDTEntryDataAt, null, options, request);
+      }
+      public virtual AsyncUnaryCall<global::Etg.Data.Entry.GetYDTEntryDataResponse> GetYDTEntryDataAtAsync(global::Etg.Data.Entry.GetYDTEntryDataRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return GetYDTEntryDataAtAsync(request, new CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual AsyncUnaryCall<global::Etg.Data.Entry.GetYDTEntryDataResponse> GetYDTEntryDataAtAsync(global::Etg.Data.Entry.GetYDTEntryDataRequest request, CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetYDTEntryDataAt, null, options, request);
       }
       protected override EntryDataServiceClient NewInstance(ClientBaseConfiguration configuration)
       {
@@ -102,7 +130,8 @@ namespace Etg.Data.Entry {
     {
       return ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_GetEntryStatus, serviceImpl.GetEntryStatus)
-          .AddMethod(__Method_GetEntryData, serviceImpl.GetEntryData).Build();
+          .AddMethod(__Method_GetYDTEntryDataFrom, serviceImpl.GetYDTEntryDataFrom)
+          .AddMethod(__Method_GetYDTEntryDataAt, serviceImpl.GetYDTEntryDataAt).Build();
     }
 
   }

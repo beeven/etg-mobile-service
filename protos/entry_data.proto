@@ -31,5 +31,6 @@ message GetYDTEntryDataResponse {
 
 service EntryDataService {
     rpc GetEntryStatus(stream GetEntryStatusRequest) returns (stream GetEntryStatusResponse) {}
-    rpc GetYDTEntryData(GetYDTEntryDataRequest) returns (stream GetYDTEntryDataResponse) {}
+    rpc GetYDTEntryDataFrom(GetYDTEntryDataRequest) returns (stream GetYDTEntryDataResponse) {}
+    rpc GetYDTEntryDataAt(GetYDTEntryDataRequest) returns (GetYDTEntryDataResponse) {}
 }

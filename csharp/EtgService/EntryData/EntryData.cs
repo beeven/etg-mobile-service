@@ -29,14 +29,16 @@ namespace Etg.Data.Entry {
             "ZWNsYXJlX2RhdGUYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1w",
             "IkcKFkdldFlEVEVudHJ5RGF0YVJlcXVlc3QSLQoJZGF0ZV9mcm9tGAEgASgL",
             "MhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCI6ChdHZXRZRFRFbnRyeURh",
-            "dGFSZXNwb25zZRIRCglmaWxlX25hbWUYASABKAkSDAoEZGF0YRgCIAEoDDLe",
-            "AQoQRW50cnlEYXRhU2VydmljZRJlCg5HZXRFbnRyeVN0YXR1cxIlLmV0Zy5k",
+            "dGFSZXNwb25zZRIRCglmaWxlX25hbWUYASABKAkSDAoEZGF0YRgCIAEoDDLN",
+            "AgoQRW50cnlEYXRhU2VydmljZRJlCg5HZXRFbnRyeVN0YXR1cxIlLmV0Zy5k",
             "YXRhLmVudHJ5LkdldEVudHJ5U3RhdHVzUmVxdWVzdBomLmV0Zy5kYXRhLmVu",
-            "dHJ5LkdldEVudHJ5U3RhdHVzUmVzcG9uc2UiACgBMAESYwoMR2V0RW50cnlE",
-            "YXRhEiYuZXRnLmRhdGEuZW50cnkuR2V0WURURW50cnlEYXRhUmVxdWVzdBon",
-            "LmV0Zy5kYXRhLmVudHJ5LkdldFlEVEVudHJ5RGF0YVJlc3BvbnNlIgAwAUIz",
-            "Cg5ldGcuZGF0YS5lbnRyeUIIRXRnUHJvdG9QAaICA0VUR6oCDkV0Zy5EYXRh",
-            "LkVudHJ5YgZwcm90bzM="));
+            "dHJ5LkdldEVudHJ5U3RhdHVzUmVzcG9uc2UiACgBMAESagoTR2V0WURURW50",
+            "cnlEYXRhRnJvbRImLmV0Zy5kYXRhLmVudHJ5LkdldFlEVEVudHJ5RGF0YVJl",
+            "cXVlc3QaJy5ldGcuZGF0YS5lbnRyeS5HZXRZRFRFbnRyeURhdGFSZXNwb25z",
+            "ZSIAMAESZgoRR2V0WURURW50cnlEYXRhQXQSJi5ldGcuZGF0YS5lbnRyeS5H",
+            "ZXRZRFRFbnRyeURhdGFSZXF1ZXN0GicuZXRnLmRhdGEuZW50cnkuR2V0WURU",
+            "RW50cnlEYXRhUmVzcG9uc2UiAEIzCg5ldGcuZGF0YS5lbnRyeUIIRXRnUHJv",
+            "dG9QAaICA0VUR6oCDkV0Zy5EYXRhLkVudHJ5YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {

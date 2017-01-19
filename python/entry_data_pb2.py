@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='entry_data.proto',
   package='etg.data.entry',
   syntax='proto3',
-  serialized_pb=_b('\n\x10\x65ntry_data.proto\x12\x0e\x65tg.data.entry\x1a\x1fgoogle/protobuf/timestamp.proto\")\n\x15GetEntryStatusRequest\x12\x10\n\x08\x65ntry_id\x18\x01 \x01(\t\"q\n\x16GetEntryStatusResponse\x12\x10\n\x08\x65ntry_id\x18\x01 \x01(\t\x12\x13\n\x0bstatus_text\x18\x02 \x01(\t\x12\x30\n\x0c\x64\x65\x63lare_date\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp2y\n\x10\x45ntryDataService\x12\x65\n\x0eGetEntryStatus\x12%.etg.data.entry.GetEntryStatusRequest\x1a&.etg.data.entry.GetEntryStatusResponse\"\x00(\x01\x30\x01\x42\x33\n\x0e\x65tg.data.entryB\x08\x45tgProtoP\x01\xa2\x02\x03\x45TG\xaa\x02\x0e\x45tg.Data.Entryb\x06proto3')
+  serialized_pb=_b('\n\x10\x65ntry_data.proto\x12\x0e\x65tg.data.entry\x1a\x1fgoogle/protobuf/timestamp.proto\")\n\x15GetEntryStatusRequest\x12\x10\n\x08\x65ntry_id\x18\x01 \x01(\t\"q\n\x16GetEntryStatusResponse\x12\x10\n\x08\x65ntry_id\x18\x01 \x01(\t\x12\x13\n\x0bstatus_text\x18\x02 \x01(\t\x12\x30\n\x0c\x64\x65\x63lare_date\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"G\n\x16GetYDTEntryDataRequest\x12-\n\tdate_from\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\":\n\x17GetYDTEntryDataResponse\x12\x11\n\tfile_name\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\x0c\x32\xcd\x02\n\x10\x45ntryDataService\x12\x65\n\x0eGetEntryStatus\x12%.etg.data.entry.GetEntryStatusRequest\x1a&.etg.data.entry.GetEntryStatusResponse\"\x00(\x01\x30\x01\x12j\n\x13GetYDTEntryDataFrom\x12&.etg.data.entry.GetYDTEntryDataRequest\x1a\'.etg.data.entry.GetYDTEntryDataResponse\"\x00\x30\x01\x12\x66\n\x11GetYDTEntryDataAt\x12&.etg.data.entry.GetYDTEntryDataRequest\x1a\'.etg.data.entry.GetYDTEntryDataResponse\"\x00\x42\x33\n\x0e\x65tg.data.entryB\x08\x45tgProtoP\x01\xa2\x02\x03\x45TG\xaa\x02\x0e\x45tg.Data.Entryb\x06proto3')
   ,
   dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -103,9 +103,81 @@ _GETENTRYSTATUSRESPONSE = _descriptor.Descriptor(
   serialized_end=225,
 )
 
+
+_GETYDTENTRYDATAREQUEST = _descriptor.Descriptor(
+  name='GetYDTEntryDataRequest',
+  full_name='etg.data.entry.GetYDTEntryDataRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='date_from', full_name='etg.data.entry.GetYDTEntryDataRequest.date_from', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=227,
+  serialized_end=298,
+)
+
+
+_GETYDTENTRYDATARESPONSE = _descriptor.Descriptor(
+  name='GetYDTEntryDataResponse',
+  full_name='etg.data.entry.GetYDTEntryDataResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='file_name', full_name='etg.data.entry.GetYDTEntryDataResponse.file_name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='data', full_name='etg.data.entry.GetYDTEntryDataResponse.data', index=1,
+      number=2, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(""),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=300,
+  serialized_end=358,
+)
+
 _GETENTRYSTATUSRESPONSE.fields_by_name['declare_date'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
+_GETYDTENTRYDATAREQUEST.fields_by_name['date_from'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 DESCRIPTOR.message_types_by_name['GetEntryStatusRequest'] = _GETENTRYSTATUSREQUEST
 DESCRIPTOR.message_types_by_name['GetEntryStatusResponse'] = _GETENTRYSTATUSRESPONSE
+DESCRIPTOR.message_types_by_name['GetYDTEntryDataRequest'] = _GETYDTENTRYDATAREQUEST
+DESCRIPTOR.message_types_by_name['GetYDTEntryDataResponse'] = _GETYDTENTRYDATARESPONSE
 
 GetEntryStatusRequest = _reflection.GeneratedProtocolMessageType('GetEntryStatusRequest', (_message.Message,), dict(
   DESCRIPTOR = _GETENTRYSTATUSREQUEST,
@@ -120,6 +192,20 @@ GetEntryStatusResponse = _reflection.GeneratedProtocolMessageType('GetEntryStatu
   # @@protoc_insertion_point(class_scope:etg.data.entry.GetEntryStatusResponse)
   ))
 _sym_db.RegisterMessage(GetEntryStatusResponse)
+
+GetYDTEntryDataRequest = _reflection.GeneratedProtocolMessageType('GetYDTEntryDataRequest', (_message.Message,), dict(
+  DESCRIPTOR = _GETYDTENTRYDATAREQUEST,
+  __module__ = 'entry_data_pb2'
+  # @@protoc_insertion_point(class_scope:etg.data.entry.GetYDTEntryDataRequest)
+  ))
+_sym_db.RegisterMessage(GetYDTEntryDataRequest)
+
+GetYDTEntryDataResponse = _reflection.GeneratedProtocolMessageType('GetYDTEntryDataResponse', (_message.Message,), dict(
+  DESCRIPTOR = _GETYDTENTRYDATARESPONSE,
+  __module__ = 'entry_data_pb2'
+  # @@protoc_insertion_point(class_scope:etg.data.entry.GetYDTEntryDataResponse)
+  ))
+_sym_db.RegisterMessage(GetYDTEntryDataResponse)
 
 
 DESCRIPTOR.has_options = True
@@ -144,11 +230,31 @@ class EntryDataServiceStub(object):
         request_serializer=GetEntryStatusRequest.SerializeToString,
         response_deserializer=GetEntryStatusResponse.FromString,
         )
+    self.GetYDTEntryDataFrom = channel.unary_stream(
+        '/etg.data.entry.EntryDataService/GetYDTEntryDataFrom',
+        request_serializer=GetYDTEntryDataRequest.SerializeToString,
+        response_deserializer=GetYDTEntryDataResponse.FromString,
+        )
+    self.GetYDTEntryDataAt = channel.unary_unary(
+        '/etg.data.entry.EntryDataService/GetYDTEntryDataAt',
+        request_serializer=GetYDTEntryDataRequest.SerializeToString,
+        response_deserializer=GetYDTEntryDataResponse.FromString,
+        )
 
 
 class EntryDataServiceServicer(object):
 
   def GetEntryStatus(self, request_iterator, context):
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def GetYDTEntryDataFrom(self, request, context):
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def GetYDTEntryDataAt(self, request, context):
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
@@ -160,6 +266,16 @@ def add_EntryDataServiceServicer_to_server(servicer, server):
           servicer.GetEntryStatus,
           request_deserializer=GetEntryStatusRequest.FromString,
           response_serializer=GetEntryStatusResponse.SerializeToString,
+      ),
+      'GetYDTEntryDataFrom': grpc.unary_stream_rpc_method_handler(
+          servicer.GetYDTEntryDataFrom,
+          request_deserializer=GetYDTEntryDataRequest.FromString,
+          response_serializer=GetYDTEntryDataResponse.SerializeToString,
+      ),
+      'GetYDTEntryDataAt': grpc.unary_unary_rpc_method_handler(
+          servicer.GetYDTEntryDataAt,
+          request_deserializer=GetYDTEntryDataRequest.FromString,
+          response_serializer=GetYDTEntryDataResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
@@ -175,6 +291,10 @@ class BetaEntryDataServiceServicer(object):
   only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
   def GetEntryStatus(self, request_iterator, context):
     context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
+  def GetYDTEntryDataFrom(self, request, context):
+    context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
+  def GetYDTEntryDataAt(self, request, context):
+    context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
 
 
 class BetaEntryDataServiceStub(object):
@@ -185,6 +305,11 @@ class BetaEntryDataServiceStub(object):
   only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
   def GetEntryStatus(self, request_iterator, timeout, metadata=None, with_call=False, protocol_options=None):
     raise NotImplementedError()
+  def GetYDTEntryDataFrom(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
+    raise NotImplementedError()
+  def GetYDTEntryDataAt(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
+    raise NotImplementedError()
+  GetYDTEntryDataAt.future = None
 
 
 def beta_create_EntryDataService_server(servicer, pool=None, pool_size=None, default_timeout=None, maximum_timeout=None):
@@ -195,12 +320,18 @@ def beta_create_EntryDataService_server(servicer, pool=None, pool_size=None, def
   generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
   request_deserializers = {
     ('etg.data.entry.EntryDataService', 'GetEntryStatus'): GetEntryStatusRequest.FromString,
+    ('etg.data.entry.EntryDataService', 'GetYDTEntryDataAt'): GetYDTEntryDataRequest.FromString,
+    ('etg.data.entry.EntryDataService', 'GetYDTEntryDataFrom'): GetYDTEntryDataRequest.FromString,
   }
   response_serializers = {
     ('etg.data.entry.EntryDataService', 'GetEntryStatus'): GetEntryStatusResponse.SerializeToString,
+    ('etg.data.entry.EntryDataService', 'GetYDTEntryDataAt'): GetYDTEntryDataResponse.SerializeToString,
+    ('etg.data.entry.EntryDataService', 'GetYDTEntryDataFrom'): GetYDTEntryDataResponse.SerializeToString,
   }
   method_implementations = {
     ('etg.data.entry.EntryDataService', 'GetEntryStatus'): face_utilities.stream_stream_inline(servicer.GetEntryStatus),
+    ('etg.data.entry.EntryDataService', 'GetYDTEntryDataAt'): face_utilities.unary_unary_inline(servicer.GetYDTEntryDataAt),
+    ('etg.data.entry.EntryDataService', 'GetYDTEntryDataFrom'): face_utilities.unary_stream_inline(servicer.GetYDTEntryDataFrom),
   }
   server_options = beta_implementations.server_options(request_deserializers=request_deserializers, response_serializers=response_serializers, thread_pool=pool, thread_pool_size=pool_size, default_timeout=default_timeout, maximum_timeout=maximum_timeout)
   return beta_implementations.server(method_implementations, options=server_options)
@@ -214,12 +345,18 @@ def beta_create_EntryDataService_stub(channel, host=None, metadata_transformer=N
   generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
   request_serializers = {
     ('etg.data.entry.EntryDataService', 'GetEntryStatus'): GetEntryStatusRequest.SerializeToString,
+    ('etg.data.entry.EntryDataService', 'GetYDTEntryDataAt'): GetYDTEntryDataRequest.SerializeToString,
+    ('etg.data.entry.EntryDataService', 'GetYDTEntryDataFrom'): GetYDTEntryDataRequest.SerializeToString,
   }
   response_deserializers = {
     ('etg.data.entry.EntryDataService', 'GetEntryStatus'): GetEntryStatusResponse.FromString,
+    ('etg.data.entry.EntryDataService', 'GetYDTEntryDataAt'): GetYDTEntryDataResponse.FromString,
+    ('etg.data.entry.EntryDataService', 'GetYDTEntryDataFrom'): GetYDTEntryDataResponse.FromString,
   }
   cardinalities = {
     'GetEntryStatus': cardinality.Cardinality.STREAM_STREAM,
+    'GetYDTEntryDataAt': cardinality.Cardinality.UNARY_UNARY,
+    'GetYDTEntryDataFrom': cardinality.Cardinality.UNARY_STREAM,
   }
   stub_options = beta_implementations.stub_options(host=host, metadata_transformer=metadata_transformer, request_serializers=request_serializers, response_deserializers=response_deserializers, thread_pool=pool, thread_pool_size=pool_size)
   return beta_implementations.dynamic_stub(channel, 'etg.data.entry.EntryDataService', cardinalities, options=stub_options)
