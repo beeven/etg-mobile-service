@@ -10,8 +10,8 @@ namespace Etg.Service
 {
     class Program
     {
-        static readonly string[] EntriesToQuery = { "518920160896053556", "516620160666505983",
-                "518920160896053557", "51520160536088309" };
+        static readonly string[] EntriesToQuery = { "514120160416820469", "514120160416820660",
+                "514120161416337430", "514120161416337430" };
         public class EtgServiceClient
         {
             readonly EntryDataService.EntryDataServiceClient client;
@@ -54,7 +54,8 @@ namespace Etg.Service
         }
         static void Main(string[] args)
         {
-            Channel channel = new Channel("gzeport.gzcustoms.gov.cn:8080", ChannelCredentials.Insecure);
+            //Channel channel = new Channel("gzeport.gzcustoms.gov.cn:8080", ChannelCredentials.Insecure);
+            Channel channel = new Channel("localhost:8083", ChannelCredentials.Insecure);
             var client = new EtgServiceClient(new EntryDataService.EntryDataServiceClient(channel));
             client.GetEntryStatus().Wait();
             channel.ShutdownAsync().Wait();

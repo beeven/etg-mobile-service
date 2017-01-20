@@ -56,10 +56,11 @@ namespace Etg.Service
         public void ConfigureServices(ServiceCollection services)
         {
             services.AddOptions();
-            services.Configure<EtgServiceOptions>(Configuration.GetSection("Ports"));
+            services.Configure<EtgServiceOptions>(Configuration.GetSection("ports"));
+            services.Configure<EntryDataServiceOptions>(Configuration.GetSection("entryData"));
 
             services.AddLogging();
-            services.AddSingleton(new EntryDataServiceImpl(Configuration["entryData:popServiceUrl"]??"http://10.53.1.181:3000/entry_pop/api/entry/"));
+            services.AddSingleton<EntryDataServiceImpl>();
             services.AddSingleton<EtgService>();
         }
 

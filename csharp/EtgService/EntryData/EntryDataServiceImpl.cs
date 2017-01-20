@@ -11,6 +11,7 @@ using Google.Protobuf.WellKnownTypes;
 using System.IO;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using System.Data;
 
 namespace Etg.Data.Entry
 {
@@ -19,13 +20,16 @@ namespace Etg.Data.Entry
         private HttpClient httpClient;
         private string servicePath;
         private string zipPath;
+        private string DbConn;
         private readonly ILogger<EntryDataServiceImpl> logger;
 
         public EntryDataServiceImpl(IOptions<EntryDataServiceOptions> optionsAccessor, ILoggerFactory loggerFactory)
         {
-            var serviceUrl = new Uri(optionsAccessor.Value.PopServiceUrl);
-            httpClient = new HttpClient() { BaseAddress = new Uri(serviceUrl.GetComponents(UriComponents.SchemeAndServer, UriFormat.UriEscaped)) };
-            servicePath = serviceUrl.LocalPath;
+            //var serviceUrl = new Uri(optionsAccessor.Value.PopServiceUrl);
+            //httpClient = new HttpClient() { BaseAddress = new Uri(serviceUrl.GetComponents(UriComponents.SchemeAndServer, UriFormat.UriEscaped)) };
+            //servicePath = serviceUrl.LocalPath;
+            DbConn = optionsAccessor.Value.DbConn;
+          
             zipPath = optionsAccessor.Value.DataFilePath;
             this.logger = loggerFactory.CreateLogger<EntryDataServiceImpl>();
         }
@@ -93,11 +97,12 @@ namespace Etg.Data.Entry
                 var request = requestStream.Current;
                 var status = await QueryEntryStatus(request.EntryId);
 
-                GetEntryStatusResponse ret = new GetEntryStatusResponse(){EntryId = request.EntryId};
-                if(status != null) {
+                GetEntryStatusResponse ret = new GetEntryStatusResponse() { EntryId = request.EntryId };
+                if (status != null)
+                {
                     ret.StatusText = status.StatusText;
                     ret.DeclareDate = status.DeclareDate;
-                } 
+                }
                 await responseStream.WriteAsync(ret);
             }
         }
@@ -107,19 +112,34 @@ namespace Etg.Data.Entry
         {
             try
             {
-                var res = await httpClient.GetStringAsync($"{servicePath}/{entryId}");
-                var resObj = JObject.Parse(res);
-                if (resObj.Value<int>("code") == 200)
+                //var res = await httpClient.GetStringAsync($"{servicePath}/{entryId}");
+                //var resObj = JObject.Parse(res);
+                //if (resObj.Value<int>("code") == 200)
+                //{
+                //    if (resObj["data"][entryId] != null)
+                //    {
+                //        return new QueryReply()
+                //        {
+                //            StatusText = resObj["data"][entryId].Value<string>("status"),
+                //            DeclareDate = Timestamp.FromDateTime(resObj["data"][entryId].Value<DateTime>("declare_date"))
+                //        };
+                //    }
+                //}
+
+               
+                string strStatus = "";
+                string strdDate = "";
+                await Task.Run(() =>
                 {
-                    if (resObj["data"][entryId] != null)
-                    {
-                        return new QueryReply()
-                        {
-                            StatusText = resObj["data"][entryId].Value<string>("status"),
-                            DeclareDate = Timestamp.FromDateTime(resObj["data"][entryId].Value<DateTime>("declare_date"))
-                        };
-                    }
-                }
+                    GetStatusFromDb(entryId, out strStatus, out strdDate);
+                });
+              
+                var a= new QueryReply()
+                {
+                    StatusText = strStatus,
+                    DeclareDate = Timestamp.FromDateTime(DateTime.Parse(strdDate).ToUniversalTime())
+                };
+                return a;
             }
             catch (AggregateException ex)
             {
@@ -128,5 +148,33 @@ namespace Etg.Data.Entry
 
             return null;
         }
+
+        #region 访问数据库
+        /// <summary>
+        /// 从数据库中获报关单状态
+        /// </summary>
+        /// <param name="entryId">报关单ID</param>
+        /// <returns></returns>
+        private void GetStatusFromDb(string entryId, out string status, out string dDate)
+        {
+            status = "";
+            dDate = "";
+            if (entryId.Length != 18)
+            {
+                return;
+            }
+
+            string SQL = string.Format("SELECt top 1 CHANNEL,D_DATE  FROM [ENT_RET_2012].[dbo].[ENTRY_RETURN] where ENTRY_ID='{0}' order by f_name desc", entryId);
+            SQLHelper.strConnect = DbConn;
+            DataTable dt = SQLHelper.FillDataTable(SQL);
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                status = dt.Rows[0]["CHANNEL"].ToString();
+                dDate = dt.Rows[0]["D_DATE"].ToString();
+            }
+ 
+
+        }
+        #endregion
     }
 }

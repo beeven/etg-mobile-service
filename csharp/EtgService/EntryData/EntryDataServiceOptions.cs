@@ -10,5 +10,6 @@ namespace Etg.Data.Entry
     {
         public string PopServiceUrl { get; set; }
         public string DataFilePath { get; set; }
+        public string DbConn { get; set; }
     }
 }
